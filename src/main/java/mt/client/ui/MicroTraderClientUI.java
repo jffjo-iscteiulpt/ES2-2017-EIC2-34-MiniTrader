@@ -1,6 +1,8 @@
 package mt.client.ui;
 
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Level;
@@ -50,8 +52,12 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
         jSeparator = new javax.swing.JPopupMenu.Separator();
         exit = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenu2.setBackground(new Color(12, 12, 12));
         jMenuItem2 = new javax.swing.JMenuItem();
-
+        
+        
+        
+        
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle(screenTitle + " | (Disconnected)");
         setResizable(false);
@@ -130,7 +136,14 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem2);
-
+        
+        ///Alteração
+        
+        jMenuItem2.setFont(new Font("Serif", Font.BOLD, 12));
+        
+        
+        
+        
         menuBar.add(jMenu2);
 
         setJMenuBar(menuBar);
@@ -242,7 +255,7 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem exit;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem2;   
     private javax.swing.JPopupMenu.Separator jSeparator;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JMenuBar menuBar;
