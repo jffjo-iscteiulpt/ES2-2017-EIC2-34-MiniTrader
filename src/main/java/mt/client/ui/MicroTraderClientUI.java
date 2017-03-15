@@ -137,9 +137,9 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem2);
         
-        ///Alteração
+        ///Alteration
         
-        jMenuItem2.setFont(new Font("Serif", Font.ITALIC, 12));
+        jMenuItem2.setFont(new Font("Serif", Font.BOLD, 12));
         
         
         
