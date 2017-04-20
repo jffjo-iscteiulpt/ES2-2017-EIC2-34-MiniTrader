@@ -3,7 +3,7 @@ package mt.server;
 public class XMLReader {
 
 	public XMLReader() {
-		
+		//
 	}
 	
 	public static void main(String[] args) {
