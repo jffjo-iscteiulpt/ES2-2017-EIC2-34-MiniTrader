@@ -42,6 +42,9 @@ public class XmlProject {
                System.out.println();
             }
          }
+         
+         //Le ordem especifica
+         
          System.out.println("----- Search the tree with xpath queries -----");  
          // Query 1 
          XPathFactory xpathFactory = XPathFactory.newInstance();
@@ -58,6 +61,11 @@ public class XmlProject {
          String str = (String) expr.evaluate(doc, XPathConstants.STRING);
          System.out.println();System.out.println("Customer of Order Id=5: " + str);
          
+         
+         
+         
+         //Adiciona elemento
+         
          // Create new element Order with attributes
          Element newElement = doc.createElement("Order");
          newElement.setAttribute("Id", "5");
@@ -66,6 +74,7 @@ public class XmlProject {
          newElement.setAttribute("Units", "15");
          newElement.setAttribute("Price", "20");
   
+         
          // Add new node to XML document root element
          System.out.println("----- Adding new element to root element -----");
          System.out.println("Root element :" + doc.getDocumentElement().getNodeName());         
