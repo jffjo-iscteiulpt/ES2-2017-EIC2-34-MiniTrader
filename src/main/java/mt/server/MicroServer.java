@@ -302,9 +302,28 @@ public class MicroServer implements MicroTraderServer {
 		doc.getDocumentElement().normalize();
 		Node n = doc.getDocumentElement();
 		Element newElement = doc.createElement("Order");
+		String id = o.getServerOrderID() + "";
+		String type="";
+		if (o.isSellOrder()){
+			type="Sell";
+		}
+		
+		if (o.isBuyOrder()){
+			type="Buy";
+		}
+		String stock = o.getStock() +"";
+		String units = o.getNumberOfUnits() +"";
+		String price = o.getPricePerUnit()+"";
+		
+		newElement.setAttribute("ID", id);
+		newElement.setAttribute("Type", type);
+		newElement.setAttribute("Stock",stock);
+		newElement.setAttribute("Units", units);
+		newElement.setAttribute("Price", price);
 		n.appendChild(newElement);
 		// Save XML document
 		System.out.println("Save XML document.");
+		
 		Transformer transformer = TransformerFactory.newInstance().newTransformer();
 		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 		StreamResult result = new StreamResult(new FileOutputStream("MicroTraderPersistence.xml"));
