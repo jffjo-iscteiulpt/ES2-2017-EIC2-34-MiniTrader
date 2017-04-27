@@ -1,0 +1,54 @@
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:12:	headerCommentRequirement Required
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:14:	Parameter 'args' is not assigned and could be declared final
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:14:	publicMethodCommentRequirement Required
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:15:	Local variable 'clientComm' could be declared final
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:16:	Local variable 'client' could be declared final
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:18:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:18:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:18:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:24:	Found 'UR'-anomaly for variable 'info' (lines '24'-'27').
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:24:	Parameter 'clientComm' is not assigned and could be declared final
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:24:	publicMethodCommentRequirement Required
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:26:	Local variable 'info' could be declared final
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:26:	Potential violation of Law of Demeter (static property access)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:28:	Potential violation of Law of Demeter (static property access)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:33:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:33:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:33:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:33:	Potential violation of Law of Demeter (static property access)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:33:	Unnecessary use of fully qualified name 'java.util.logging.Level.SEVERE' due to existing import 'java.util.logging.Level'
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:33:	Unnecessary use of fully qualified name 'java.util.logging.Logger.getLogger' due to existing import 'java.util.logging.Logger'
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:36:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:36:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:36:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:36:	Potential violation of Law of Demeter (static property access)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:36:	Unnecessary use of fully qualified name 'java.util.logging.Level.SEVERE' due to existing import 'java.util.logging.Level'
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:36:	Unnecessary use of fully qualified name 'java.util.logging.Logger.getLogger' due to existing import 'java.util.logging.Logger'
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:39:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:39:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:39:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:39:	Potential violation of Law of Demeter (static property access)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:39:	Unnecessary use of fully qualified name 'java.util.logging.Level.SEVERE' due to existing import 'java.util.logging.Level'
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:39:	Unnecessary use of fully qualified name 'java.util.logging.Logger.getLogger' due to existing import 'java.util.logging.Logger'
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:42:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:42:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:42:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:42:	Potential violation of Law of Demeter (static property access)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:42:	Unnecessary use of fully qualified name 'java.util.logging.Level.SEVERE' due to existing import 'java.util.logging.Level'
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:42:	Unnecessary use of fully qualified name 'java.util.logging.Logger.getLogger' due to existing import 'java.util.logging.Logger'
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:46:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:46:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:46:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:47:	Avoid variables with short names like ui
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:47:	Local variable 'ui' could be declared final
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:52:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:52:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:52:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:55:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:55:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:55:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:58:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:58:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:58:	Potential violation of Law of Demeter (method chain calls)
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:61:	Parameter 'object' is not assigned and could be declared final
+src/main/java/mt/client/impl/MicroTraderClientImpl.java:61:	publicMethodCommentRequirement Required
