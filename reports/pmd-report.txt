@@ -52,3 +52,4 @@ src/main/java/mt/client/impl/MicroTraderClientImpl.java:58:	Potential violation 
 src/main/java/mt/client/impl/MicroTraderClientImpl.java:58:	Potential violation of Law of Demeter (method chain calls)
 src/main/java/mt/client/impl/MicroTraderClientImpl.java:61:	Parameter 'object' is not assigned and could be declared final
 src/main/java/mt/client/impl/MicroTraderClientImpl.java:61:	publicMethodCommentRequirement Required
+
