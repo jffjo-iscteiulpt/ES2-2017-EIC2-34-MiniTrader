@@ -40,7 +40,6 @@ import mt.filter.AnalyticsFilter;
  * business logic of stock transactions between buyers and sellers.
  * 
  * @author Group 78
- *
  */
 public class MicroServer implements MicroTraderServer {
 
