@@ -81,6 +81,7 @@ public class XmlProject {
          System.out.println("Add Order Id='5' Type='Buy' Stock='PT' Units='15' Price='20'");
          Node n = doc.getDocumentElement();
          n.appendChild(newElement);
+         
          // Save XML document
          System.out.println("Save XML document.");
          Transformer transformer = TransformerFactory.newInstance().newTransformer();
