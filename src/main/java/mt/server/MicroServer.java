@@ -258,38 +258,33 @@ public class MicroServer implements MicroTraderServer {
 		LOGGER.log(Level.INFO, "Processing new order...");
 
 		Order o = msg.getOrder();
-		if(o.getNumberOfUnits()<10) {
-			System.out.println("ERRO: ORDER COM MENOS DE 10 UNIDADES");
-			return;
-		}
-
-		// if is buy order
-		if (o.isBuyOrder()) {
-			// save the order on map
-			saveOrder(o);
-			processBuy(msg.getOrder());
-			
-		}
-		// if is sell order
-		if (o.isSellOrder()) {
-			// save the order on map
-			if(countUnfulfilledOrders(o.getNickname())<5) {
+		if (o.getNumberOfUnits() >= 10) {
+			// if is buy order
+			System.out.println("boss");
+			if (o.isBuyOrder()) {
+				// save the order on map
 				saveOrder(o);
-				processSell(msg.getOrder());
-			}else {
-				System.out.println("ERRO: MAIS DO QUE 5 SELL ORDERS");
+				processBuy(msg.getOrder());
 			}
+			// if is sell order
+			if (o.isSellOrder()) {
+				// save the order on map
+				if (countUnfulfilledOrders(o.getNickname()) < 5) {
+					saveOrder(o);
+					processSell(msg.getOrder());
+				} else {
+					System.out.println("ERRO: MAIS DO QUE 5 SELL ORDERS");
+				}
+			}
+			// notify clients of changed order
+			notifyClientsOfChangedOrders();
+			// remove all fulfilled orders
+			removeFulfilledOrders();
+			// reset the set of changed orders
+			updatedOrders = new HashSet<>();
+		}else {
+			System.out.println("ERRO: ORDER COM MENOS DE 10 UNIDADES");
 		}
-
-		// notify clients of changed order
-		notifyClientsOfChangedOrders();
-
-		// remove all fulfilled orders
-		removeFulfilledOrders();
-
-		// reset the set of changed orders
-		updatedOrders = new HashSet<>();
-
 	}
 
 	/**
@@ -411,8 +406,7 @@ public class MicroServer implements MicroTraderServer {
 			}
 			updatedOrders.add(buyOrder);
 			updatedOrders.add(sellerOrder);
-		}
-		else {
+		} else {
 			System.out.println("ERRO: nome vendedor e comprador igual");
 		}
 	}
@@ -467,13 +461,14 @@ public class MicroServer implements MicroTraderServer {
 			}
 		}
 	}
-	
+
 	/**
-	 * count the unfulfilledOrders from user	
+	 * count the unfulfilledOrders from user
+	 * 
 	 * @param nickname
 	 */
 	private int countUnfulfilledOrders(String nickname) {
-		int numberOfUnfulfilled =0;
+		int numberOfUnfulfilled = 0;
 		for (Entry<String, Set<Order>> entry : orderMap.entrySet()) {
 			Iterator<Order> it = entry.getValue().iterator();
 			while (it.hasNext()) {
@@ -485,11 +480,5 @@ public class MicroServer implements MicroTraderServer {
 		}
 		return numberOfUnfulfilled;
 	}
-	
-	
-	
-	
-	
-	
 
 }
