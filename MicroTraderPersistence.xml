@@ -12,4 +12,6 @@
 <Order ID="2" Price="2.0" Stock="AUTO#2" Type="Buy" Units="2"/>
 <Order ID="3" Price="3.0" Stock="AUTO#3" Type="Sell" Units="3"/>
 <Order ID="1" Price="123.0" Stock="oranges" Type="Sell" Units="123"/>
+<Order ID="1" Price="11.0" Stock="asd" Type="Buy" Units="11"/>
+<Order ID="2" Price="11.0" Stock="asd" Type="Sell" Units="11"/>
 </XML>
