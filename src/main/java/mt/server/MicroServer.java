@@ -141,7 +141,6 @@ public class MicroServer implements MicroTraderServer {
 					if (msg.getOrder().getServerOrderID() == EMPTY) {
 						msg.getOrder().setServerOrderID(id++);
 					}
-					notifyAllClients(msg.getOrder());
 					processNewOrder(msg);
 				} catch (ServerException e) {
 					serverComm.sendError(msg.getSenderNickname(), e.getMessage());
@@ -260,11 +259,11 @@ public class MicroServer implements MicroTraderServer {
 		Order o = msg.getOrder();
 		if (o.getNumberOfUnits() >= 10) {
 			// if is buy order
-			System.out.println("boss");
 			if (o.isBuyOrder()) {
 				// save the order on map
 				saveOrder(o);
 				processBuy(msg.getOrder());
+				notifyAllClients(msg.getOrder());
 			}
 			// if is sell order
 			if (o.isSellOrder()) {
@@ -272,8 +271,9 @@ public class MicroServer implements MicroTraderServer {
 				if (countUnfulfilledOrders(o.getNickname()) < 5) {
 					saveOrder(o);
 					processSell(msg.getOrder());
+					notifyAllClients(msg.getOrder());
 				} else {
-					System.out.println("ERRO: MAIS DO QUE 5 SELL ORDERS");
+					LOGGER.log(Level.INFO, "ERRO: MAIS DO QUE 5 SELL ORDERS");
 				}
 			}
 			// notify clients of changed order
@@ -407,7 +407,7 @@ public class MicroServer implements MicroTraderServer {
 			updatedOrders.add(buyOrder);
 			updatedOrders.add(sellerOrder);
 		} else {
-			System.out.println("ERRO: nome vendedor e comprador igual");
+			LOGGER.log(Level.INFO, "WARNING: nome vendedor e comprador igual");
 		}
 	}
 

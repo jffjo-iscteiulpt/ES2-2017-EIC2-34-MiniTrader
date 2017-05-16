@@ -16,4 +16,13 @@
 <Order ID="1" Price="20.0" Stock="msf" Type="Buy" Units="20"/>
 <Order ID="2" Price="20.0" Stock="msf" Type="Sell" Units="20"/>
 <Order ID="3" Price="20.0" Stock="msf" Type="Buy" Units="20"/>
+<Order ID="2" Price="20.0" Stock="msf" Type="Sell" Units="20"/>
+<Order ID="3" Price="20.0" Stock="msf" Type="Buy" Units="20"/>
+<Order ID="4" Price="20.0" Stock="msf" Type="Buy" Units="20"/>
+<Order ID="5" Price="20.0" Stock="msf" Type="Sell" Units="20"/>
+<Order ID="1" Price="20.0" Stock="msf" Type="Sell" Units="20"/>
+<Order ID="2" Price="50.0" Stock="snap" Type="Sell" Units="50"/>
+<Order ID="3" Price="30.0" Stock="face" Type="Sell" Units="30"/>
+<Order ID="4" Price="10.0" Stock="apple" Type="Sell" Units="100"/>
+<Order ID="5" Price="50.0" Stock="msf" Type="Sell" Units="50"/>
 </XML>
