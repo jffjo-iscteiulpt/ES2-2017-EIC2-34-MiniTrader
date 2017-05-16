@@ -389,7 +389,7 @@ public class MicroServer implements MicroTraderServer {
 	private void notifyClientsOfChangedOrders() throws ServerException {
 		LOGGER.log(Level.INFO, "Notifying client about the changed order...");
 		for (Order order : updatedOrders) {
-			notifyAllClients(order);
+			notifyAllClients(order);//
 		}
 	}
 
