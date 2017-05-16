@@ -6,15 +6,16 @@
 	<Order Id="2" Price="2" Stock="GALP" Type="Sell" Units="20">
 			<Customer>Mary</Customer>
 	</Order>
-<Order ID="1" Price="30.0" Stock="msf" Type="Sell" Units="20"/>
-<Order ID="2" Price="30.0" Stock="lk" Type="Sell" Units="30"/>
-<Order ID="3" Price="30.0" Stock="fsf" Type="Sell" Units="30"/>
-<Order ID="1" Price="10.0" Stock="ko" Type="Sell" Units="80"/>
-<Order ID="2" Price="10.0" Stock="we" Type="Sell" Units="10"/>
-<Order ID="3" Price="10.0" Stock="saf" Type="Sell" Units="20"/>
-<Order ID="1" Price="10.0" Stock="addsad" Type="Sell" Units="10"/>
-<Order ID="2" Price="30.0" Stock="ewr" Type="Sell" Units="30"/>
-<Order ID="3" Price="10.0" Stock="fdfe" Type="Sell" Units="50"/>
-<Order ID="4" Price="10.0" Stock="usbdg" Type="Sell" Units="50"/>
-<Order ID="5" Price="10.0" Stock="youtube" Type="Sell" Units="50"/>
+<Order ID="2" Price="10.0" Stock="msf" Type="Sell" Units="20"/>
+<Order ID="3" Price="20.0" Stock="msf" Type="Sell" Units="50"/>
+<Order ID="4" Price="20.0" Stock="lol" Type="Sell" Units="80"/>
+<Order ID="5" Price="60.0" Stock="snap" Type="Sell" Units="60"/>
+<Order ID="6" Price="30.0" Stock="apple" Type="Sell" Units="50"/>
+<Order ID="1" Price="20.0" Stock="msf" Type="Sell" Units="20"/>
+<Order ID="2" Price="50.0" Stock="face" Type="Sell" Units="50"/>
+<Order ID="3" Price="50.0" Stock="msf" Type="Sell" Units="50"/>
+<Order ID="4" Price="30.0" Stock="snap" Type="Sell" Units="30"/>
+<Order ID="5" Price="20.0" Stock="face" Type="Sell" Units="20"/>
+<Order ID="8" Price="30.0" Stock="snap" Type="Buy" Units="30"/>
+<Order ID="9" Price="50.0" Stock="snap" Type="Sell" Units="50"/>
 </XML>
