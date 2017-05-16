@@ -8,4 +8,5 @@
 	</Order>
 <Order Id="5" Price="20" Stock="PT" Type="Buy" Units="15"/>
 <Order Id="5" Price="20" Stock="PT" Type="Buy" Units="15"/>
+<Order/>
 </XML>

@@ -192,8 +192,10 @@ public class MicroServer implements MicroTraderServer {
 				throw new ServerException("The user " + msg.getSenderNickname() + " is already connected.");
 			}
 		}
+
 		// register the new user
 		orderMap.put(msg.getSenderNickname(), new HashSet<Order>());
+
 		notifyClientsOfCurrentActiveOrders(msg);
 	}
 
