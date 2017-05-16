@@ -109,6 +109,7 @@ public class MicroServer implements MicroTraderServer {
 					System.out.print(" Stock:" + eElement.getAttribute("Stock"));
 					System.out.print(" Units:" + eElement.getAttribute("Units"));
 					System.out.print(" Price:" + eElement.getAttribute("Price"));
+					System.out.print(" Customer:"+ eElement.getAttribute("Customer"));
 					System.out.println();
 				}
 			}
@@ -287,27 +288,53 @@ public class MicroServer implements MicroTraderServer {
 		LOGGER.log(Level.INFO, "Storing the new order...");
 
 		// save order on map
-		try {
-			File inputFile = new File("MicroTraderPersistence.xml");
-			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document doc = dBuilder.parse(inputFile);
-			doc.getDocumentElement().normalize();
-			Node n = doc.getDocumentElement();
-			Element newElement = doc.createElement("Order");
-			n.appendChild(newElement);
-			// Save XML document
-			System.out.println("Save XML document.");
-			Transformer transformer = TransformerFactory.newInstance().newTransformer();
-			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-			StreamResult result = new StreamResult(new FileOutputStream("MicroTraderPersistence.xml"));
-			DOMSource source = new DOMSource(doc);
-			transformer.transform(source, result);
-
-		} catch (Exception e) {
-			e.printStackTrace();
+		try{
+		File inputFile = new File("MicroTraderPersistence.xml");
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(inputFile);
+		doc.getDocumentElement().normalize();
+		Node n = doc.getDocumentElement();
+		Element newElement = doc.createElement("Order");
+		Element customer = doc.createElement("Customer");
+		String id = o.getServerOrderID() + "";
+		String type="";
+		if (o.isSellOrder()){
+			type="Sell";
 		}
-
+		
+		if (o.isBuyOrder()){
+			type="Buy";
+		}
+		String stock = o.getStock() +"";
+		String units = o.getNumberOfUnits() +"";
+		String price = o.getPricePerUnit()+"";
+		
+		customer.setTextContent(o.getNickname());
+		
+		
+		newElement.setAttribute("ID", id);
+		newElement.setAttribute("Type", type);
+		newElement.setAttribute("Stock",stock);
+		newElement.setAttribute("Units", units);
+		newElement.setAttribute("Price", price);
+		
+		newElement.appendChild(customer);
+		
+		
+		n.appendChild(newElement);
+		// Save XML document
+		System.out.println("Save XML document.");
+		
+		Transformer transformer = TransformerFactory.newInstance().newTransformer();
+		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+		StreamResult result = new StreamResult(new FileOutputStream("MicroTraderPersistence.xml"));
+		DOMSource source = new DOMSource(doc);
+		transformer.transform(source, result);
+		
+		}catch (Exception e) { e.printStackTrace(); }
+		
+		
 		Set<Order> orders = orderMap.get(o.getNickname());
 		orders.add(o);
 	}
@@ -389,7 +416,7 @@ public class MicroServer implements MicroTraderServer {
 	private void notifyClientsOfChangedOrders() throws ServerException {
 		LOGGER.log(Level.INFO, "Notifying client about the changed order...");
 		for (Order order : updatedOrders) {
-			notifyAllClients(order);//
+			notifyAllClients(order);
 		}
 	}
 
