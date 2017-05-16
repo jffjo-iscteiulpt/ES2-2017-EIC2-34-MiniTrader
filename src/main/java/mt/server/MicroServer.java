@@ -142,7 +142,6 @@ public class MicroServer implements MicroTraderServer {
 					if (msg.getOrder().getServerOrderID() == EMPTY) {
 						msg.getOrder().setServerOrderID(id++);
 					}
-					notifyAllClients(msg.getOrder());
 					processNewOrder(msg);
 				} catch (ServerException e) {
 					serverComm.sendError(msg.getSenderNickname(), e.getMessage());
@@ -193,10 +192,8 @@ public class MicroServer implements MicroTraderServer {
 				throw new ServerException("The user " + msg.getSenderNickname() + " is already connected.");
 			}
 		}
-
 		// register the new user
 		orderMap.put(msg.getSenderNickname(), new HashSet<Order>());
-
 		notifyClientsOfCurrentActiveOrders(msg);
 	}
 
@@ -214,7 +211,6 @@ public class MicroServer implements MicroTraderServer {
 				ordersToSend.add(order);
 			}
 		}
-
 		// sort the orders to send to clients by server id
 		Collections.sort(ordersToSend, new Comparator<Order>() {
 			@Override
@@ -222,7 +218,6 @@ public class MicroServer implements MicroTraderServer {
 				return o1.getServerOrderID() < o2.getServerOrderID() ? -1 : 1;
 			}
 		});
-
 		for (Order order : ordersToSend) {
 			serverComm.sendOrder(msg.getSenderNickname(), order);
 		}
@@ -236,10 +231,8 @@ public class MicroServer implements MicroTraderServer {
 	 */
 	private void processUserDisconnected(ServerSideMessage msg) {
 		LOGGER.log(Level.INFO, "Disconnecting client " + msg.getSenderNickname() + "...");
-
 		// remove the client orders
 		orderMap.remove(msg.getSenderNickname());
-
 		// notify all clients of current unfulfilled orders
 		for (Entry<String, Set<Order>> entry : orderMap.entrySet()) {
 			Set<Order> orders = entry.getValue();
@@ -257,30 +250,28 @@ public class MicroServer implements MicroTraderServer {
 	 */
 	private void processNewOrder(ServerSideMessage msg) throws ServerException {
 		LOGGER.log(Level.INFO, "Processing new order...");
-
 		Order o = msg.getOrder();
-
-		// save the order on map
-		saveOrder(o);
-
-		// if is buy order
-		if (o.isBuyOrder()) {
-			processBuy(msg.getOrder());
+		if (o.getNumberOfUnits() >= 10) {
+			notifyAllClients(msg.getOrder());
+			// save the order on map
+			saveOrder(o);
+			// if is buy order
+			if (o.isBuyOrder()) {
+				processBuy(msg.getOrder());
+			}
+			// if is sell order
+			if (o.isSellOrder()) {
+				processSell(msg.getOrder());
+			}
+			// notify clients of changed order
+			notifyClientsOfChangedOrders();
+			// remove all fulfilled orders
+			removeFulfilledOrders();
+			// reset the set of changed orders
+			updatedOrders = new HashSet<>();
+		} else {
+			LOGGER.log(Level.INFO, "ERRO: ORDER COM MENOS DE 10 UNIDADES");
 		}
-
-		// if is sell order
-		if (o.isSellOrder()) {
-			processSell(msg.getOrder());
-		}
-
-		// notify clients of changed order
-		notifyClientsOfChangedOrders();
-
-		// remove all fulfilled orders
-		removeFulfilledOrders();
-
-		// reset the set of changed orders
-		updatedOrders = new HashSet<>();
 
 	}
 
@@ -294,26 +285,27 @@ public class MicroServer implements MicroTraderServer {
 		LOGGER.log(Level.INFO, "Storing the new order...");
 
 		// save order on map
-		try{
-		File inputFile = new File("MicroTraderPersistence.xml");
-		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-		Document doc = dBuilder.parse(inputFile);
-		doc.getDocumentElement().normalize();
-		Node n = doc.getDocumentElement();
-		Element newElement = doc.createElement("Order");
-		n.appendChild(newElement);
-		// Save XML document
-		System.out.println("Save XML document.");
-		Transformer transformer = TransformerFactory.newInstance().newTransformer();
-		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-		StreamResult result = new StreamResult(new FileOutputStream("MicroTraderPersistence.xml"));
-		DOMSource source = new DOMSource(doc);
-		transformer.transform(source, result);
-		
-		}catch (Exception e) { e.printStackTrace(); }
-		
-		
+		try {
+			File inputFile = new File("MicroTraderPersistence.xml");
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(inputFile);
+			doc.getDocumentElement().normalize();
+			Node n = doc.getDocumentElement();
+			Element newElement = doc.createElement("Order");
+			n.appendChild(newElement);
+			// Save XML document
+			System.out.println("Save XML document.");
+			Transformer transformer = TransformerFactory.newInstance().newTransformer();
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+			StreamResult result = new StreamResult(new FileOutputStream("MicroTraderPersistence.xml"));
+			DOMSource source = new DOMSource(doc);
+			transformer.transform(source, result);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		Set<Order> orders = orderMap.get(o.getNickname());
 		orders.add(o);
 	}
